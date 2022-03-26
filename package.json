@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "npx next lint"
   },
   "dependencies": {
     "@mui/material": "^5.5.1",
@@ -24,8 +24,8 @@
     "yup": "^0.32.11"
   },
   "lint-staged": {
-    "./src/**/*.{js,ts,md,json}": [
-      "yarn lint"
+    "./src/**/*.{js|ts|jsx|tsx|md|json}": [
+      "next lint"
     ]
   },
   "commitlint": {
