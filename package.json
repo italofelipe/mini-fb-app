@@ -9,7 +9,10 @@
     "lint": "npx next lint"
   },
   "dependencies": {
-    "@mui/material": "^5.5.1",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.2",
     "@mui/styled-engine-sc": "^5.4.2",
     "axios": "^0.26.1",
     "firebase": "^9.6.8",
@@ -20,11 +23,10 @@
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
-    "styled-components": "^5.3.3",
     "yup": "^0.32.11"
   },
   "lint-staged": {
-    "./src/**/*.{js|ts|jsx|tsx|md|json}": [
+    "./src/**/*.{js,ts,jsx,tsx,md,json}": [
       "next lint"
     ]
   },
@@ -40,7 +42,6 @@
     "@types/react": "17.0.40",
     "@types/react-redux": "^7.1.23",
     "@types/redux": "^3.6.0",
-    "@types/styled-components": "^5.1.24",
     "@types/yup": "^0.29.13",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
