@@ -43,3 +43,13 @@ interface IUser {
   interests: string[];
   friends: User["userId"][]; // amigos nada mais são que outros perfis, logo, um array
 }
+
+interface EnvMapper {
+  apiKey: string;
+  authDomain: string;
+  databaseURL: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+}
