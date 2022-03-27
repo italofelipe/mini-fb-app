@@ -53,3 +53,9 @@ interface EnvMapper {
   messagingSenderId: string;
   appId: string;
 }
+
+interface UserValidationError {
+  error: boolean;
+  field: keyof ICreateUserForm | null;
+  message: string | null;
+}

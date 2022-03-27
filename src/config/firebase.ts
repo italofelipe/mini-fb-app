@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
+  Auth,
   createUserWithEmailAndPassword,
   getAuth,
   UserCredential
@@ -13,6 +14,7 @@ export class Firebase {
   private storageBucket: string;
   private messagingSenderId: string;
   private appId: string;
+  private authData!: Auth;
 
   constructor(envMapper: EnvMapper) {
     this.apiKey = envMapper.apiKey;
@@ -22,13 +24,15 @@ export class Firebase {
     this.storageBucket = envMapper.storageBucket;
     this.messagingSenderId = envMapper.messagingSenderId;
     this.appId = envMapper.appId;
+
+    this.init();
   }
 
   /**
    *
    * @returns An object in which you can retrive your auth data or createUser method
    */
-  init() {
+  private init(): Auth {
     const firebaseEnvConfig = {
       apiKey: this.apiKey,
       authDomain: this.authDomain,
@@ -40,23 +44,15 @@ export class Firebase {
     };
 
     const app = initializeApp(firebaseEnvConfig);
-    const auth = getAuth(app);
-    return { auth, createUser: this.createUser };
+    this.authData = getAuth(app);
+    return this.authData;
   }
 
   createUser(email: string, password: string): Promise<UserCredential> {
-    const initialize = this.init().auth;
-
-    console.log(
-      "Logger",
-      Promise.resolve(
-        createUserWithEmailAndPassword(initialize, email, password)
-      )
-    );
-    return createUserWithEmailAndPassword(initialize, email, password);
+    return createUserWithEmailAndPassword(this.authData, email, password);
   }
 
-  getData() {
+  private getData() {
     const firebaseEnvConfig = {
       apiKey: this.apiKey,
       authDomain: this.authDomain,
